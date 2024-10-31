@@ -1,4 +1,9 @@
-variable "service-account-private-key" {
+variable "service-account-key-file" {
 	type = string
-	description = "Value of service account's private key used to create a new project scope"
+	description = "Path to file containing the key of the service account used to create a new project scope"
+}
+
+variable "organization-id" {
+	type = string
+	description = "Id of the organization in which the project will be created."
 }
