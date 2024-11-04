@@ -7,8 +7,3 @@ variable "organization-id" {
 	type = string
 	description = "Id of the organization in which the project will be created."
 }
-
-variable "folder-id" {
-	type = string
-	description = "Folder id of newly created folder for project."
-}
