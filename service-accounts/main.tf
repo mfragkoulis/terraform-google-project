@@ -8,13 +8,13 @@
 # The corresponding issue is documented here.
 # https://github.com/hashicorp/terraform-provider-google/issues/6497
 
-resource "google_service_account" "root-sa" {
-	account_id = "root-sa"
-	display_name = "Service Account used to create project scopes."
-	project = var.root-project-id
+resource "google_service_account" "root_sa" {
+  account_id   = "root_sa"
+  display_name = "Service Account used to create project scopes."
+  project      = var.root_project_id
 }
 
-resource "google_service_account_key" "root-sa-key" {
-	service_account_id = google_service_account.root-sa.name
-	depends_on = [google_service_account.root-sa]
+resource "google_service_account_key" "root_sa_key" {
+  service_account_id = google_service_account.root_sa.name
+  depends_on         = [google_service_account.root_sa]
 }

@@ -1,13 +1,13 @@
-resource "google_project_iam_binding" "project-owners" {
-	project = var.project-id
-	role    = "roles/owner"
+resource "google_project_iam_binding" "project_owners" {
+  project = var.project_id
+  role    = "roles/owner"
 
-	members = var.users-project-owner
+  members = var.users_project_owner
 }
 
-resource "google_project_iam_binding" "project-editors" {
-	project = var.project-id
-	role    = "roles/editor"
+resource "google_project_iam_binding" "project_editors" {
+  project = var.project_id
+  role    = "roles/editor"
 
-	members = var.users-project-editor
+  members = var.users_project_editor
 }
