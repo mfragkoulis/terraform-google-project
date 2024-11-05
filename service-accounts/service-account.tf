@@ -11,7 +11,7 @@
 resource "google_service_account" "root-sa" {
 	account_id = "root-sa"
 	display_name = "Service Account used to create project scopes."
-	project = "grnet-tf-sandbox"
+	project = var.root-project-id
 }
 
 resource "google_service_account_key" "root-sa-key" {

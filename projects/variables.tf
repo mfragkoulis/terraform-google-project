@@ -1,14 +1,19 @@
-variable "service-account-key-file" {
+variable "project-id" {
 	type = string
-	description = "Path to file containing the key of the service account used to create a new project scope"
+	description = "Id of new project. It needs to be unique across GCP."
 }
 
-variable "organization-id" {
+variable "project-name" {
 	type = string
-	description = "Id of the organization in which the project will be created."
+	description = "Display name of new project."
 }
 
 variable "folder-id" {
 	type = string
 	description = "Folder id of newly created folder for project."
+}
+
+variable "billing-account-id" {
+	type = string
+	description = "Alphanumeric id of the billing account associated with the new project."
 }

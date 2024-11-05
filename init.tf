@@ -1,35 +1,53 @@
 provider "google" {
-	project = var.project
+	project = var.root-project-id
+	credentials = var.service-account-key-file
 }
 
-# Enable Cloud Resource Manager API service used to create folders and projects.
-resource "google_project_service" "gcp_resource_manager_api" {
-  project = var.project
-  service = "cloudresourcemanager.googleapis.com"
+provider "google" {
+	# Use same provider with different configuration (project).
+	alias = "project"
+	project = module.projects.project-id
+	credentials = var.service-account-key-file
 }
 
-# Enable Cloud Billing API service used to manage billing accounts.
-resource "google_project_service" "gcp_billing_api" {
-  project = var.project
-  service = "cloudbilling.googleapis.com"
+module "services" {
+	source = "./services"
+	root-project-id = var.root-project-id
 }
-
-# Create root service account used to create project scopes.
-# Create root service account used to create project scopes.
-# For scaffolding and to understand requirements.
-# module "root-service-account" {
-#	source = "./service-accounts"
-# }
 
 module "folders" {
 	source = "./folders"
-	service-account-key-file = var.service-account-key-file
 	organization-id = var.organization-id
+	project-folder-name = var.project-folder-name
+	project-jail-folder-name = var.project-jail-folder-name
+
+	depends_on = [
+		module.services
+	]
 }
 
 module "projects" {
 	source = "./projects"
-	service-account-key-file = var.service-account-key-file
-	organization-id = var.organization-id
+	project-id = var.project-id
+	project-name = var.project-name
 	folder-id = module.folders.folder-id
+	billing-account-id = var.billing-account-id
+
+	depends_on = [
+		module.services
+	]
+}
+
+module "users" {
+	source = "./users"
+	providers = {
+		google = google.project
+	}
+	project-id = module.projects.project-id
+	users-project-owner = var.users-project-owner
+	users-project-editor = var.users-project-editor
+
+	depends_on = [
+		module.services
+	]
 }
