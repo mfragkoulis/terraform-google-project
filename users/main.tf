@@ -1,11 +1,3 @@
-terraform {
-	required_providers {
-		google = {
-			source  = "hashicorp/google"
-    		}
-  	}
-}
-
 resource "google_project_iam_binding" "project-owners" {
 	project = var.project-id
 	role    = "roles/owner"

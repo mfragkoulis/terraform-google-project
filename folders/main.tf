@@ -14,11 +14,6 @@ resource "google_folder" "project-folder" {
 	deletion_protection = false
 }
 
-# Export folder_id for use by root module
-output "folder-id" {
-	value = google_folder.project-folder.id
-}
-
 resource "google_folder" "project-jail-folder" {
 	display_name = var.project-jail-folder-name
 	parent = data.google_organization.grnet.name
