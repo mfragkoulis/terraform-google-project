@@ -5,8 +5,8 @@ variable "billing_account_id" {
 }
 
 # This is the ID of the Grnet organization used for testing.
-# Instead, it should be the id of the institution's organization passed as input to Terraform.
-variable "organization_id" {
+# Instead, it should be the id of the institution's organization or a folder therein passed as input to Terraform.
+variable "parent_id" {
   type        = string
   description = "Id of the organization in which the new project will be created."
   default     = "987298873606"

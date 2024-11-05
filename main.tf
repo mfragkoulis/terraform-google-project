@@ -17,7 +17,7 @@ module "services" {
 
 module "folders" {
   source                   = "./folders"
-  organization_id          = var.organization_id
+  parent_id                = var.parent_id
   project_folder_name      = var.project_folder_name
   project_jail_folder_name = var.project_jail_folder_name
 

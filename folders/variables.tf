@@ -1,4 +1,4 @@
-variable "organization_id" {
+variable "parent_id" {
   type        = string
   description = "Id of the organization in which the project will be created."
 }

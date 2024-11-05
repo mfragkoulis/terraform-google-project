@@ -1,5 +1,6 @@
+# TODO: refactor such that parent_id works with folder as well.
 data "google_organization" "grnet" {
-  organization = var.organization_id
+  organization = var.parent_id
 }
 
 # The role roles/resourcemanager.folderCreator should be granted at the organization level.
