@@ -15,7 +15,7 @@ variable "organization_id" {
 variable "project_folder_name" {
   type        = string
   description = "Display name of the new project's folder"
-  default     = "Test project's folder"
+  default     = "Folder of test project"
 }
 
 variable "project_id" {
@@ -27,7 +27,7 @@ variable "project_id" {
 variable "project_jail_folder_name" {
   type        = string
   description = "Display name of the new project's jail folder"
-  default     = "Test project's jail folder"
+  default     = "Jail folder of test project"
 }
 
 variable "project_name" {
